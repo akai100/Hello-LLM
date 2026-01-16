@@ -5,8 +5,8 @@ KV Cache 是大语言模型推理阶段的性能优化技术，核心是缓存�
 
 **1. Transformer Decoder 的自回归生成特性**
 
-大语言模型采用**自回归生成**方式：文本是逐 Token 依次生成的，生成第 t 个 Token 时，模型需要基于前面 $1 \sim t-1$个 Token 的上下文信息；
-生成第 $t+1$个 Token 时，需要基于 $1 \sim t$个 Token 的上下文信息。
+大语言模型采用**自回归生成**方式：文本是逐 Token 依次生成的，生成第 t 个 Token 时，模型需要基于前面 $1 \sim t-1$ 个 Token 的上下文信息；
+生成第 $$t+1$$个 Token 时，需要基于 $1 \sim t$ 个 Token 的上下文信息。
 
 **2. 无 KV Cache 时的性能瓶颈**
 
@@ -27,7 +27,7 @@ KV Cache 本质是 “空间换时间”：
 
 1. 缓存存储： 当生成第 t 个 Token 后，将该 Token 对应的 Kt、Vt 向量缓存到内存（或显存）中，形成历史 K/V 缓存集合；
 
-2. 复用缓存：生成第 $t+1$个 Token 时，直接从缓存中读取 $1 \sim t$个 Token 的 K1~Kt、V1~Vt，无需重新计算，仅需计算第 $t+1$个 Token 的 K (t+1)、V (t+1)；
+2. 复用缓存：生成第 $t+1$ 个 Token 时，直接从缓存中读取 $1 \sim t$个 Token 的 K1~Kt、V1~Vt，无需重新计算，仅需计算第 $t+1$个 Token 的 K (t+1)、V (t+1)；
 
 3. **增量更新**：将新计算的 K (t+1)、V (t+1) 追加到 KV Cache 中，供下一个 Token 生成使用
 
