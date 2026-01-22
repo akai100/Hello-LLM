@@ -26,7 +26,7 @@ LoRA(Low-Rank Adaptation)  是一种**高效微调大语言模型（LLM）与视
 
 LoA 不直接更新预训练权重 $W$，而是为其引入一个**可训练的低秩增量矩阵**，最终的权重输出为：
 
- $W_{final}= W_{pretrained}$ + \delta W$
+$$W_{final}= W_{pretrained}$ + \Delta W$$
 
 其中，低秩增量矩阵 $\Delta W$由两个低秩矩阵相乘得到：
 
