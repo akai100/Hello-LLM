@@ -37,3 +37,22 @@ $$LayerNorm(x)=\gamma \cdot \frac{x-μ}{\sqrt{\sigma^2+\epsilon}}+\beta$$
 | 计算量 |	少 “减均值” 步骤，效率提升～10%	| 多一步均值计算，效率稍低 |
 | 数值稳定性	| 无均值抵消，梯度更稳定	| 均值中心化可能导致数值抵消 |
 | 大模型效果	| 与 LayerNorm 持平 / 更优	| 小模型效果略优，大模型无优势 |
+
+## 代码实现
+
+### 以 ```Qwen3RMSNorm``` 为例
+
+```python3
+class Qwen3RMSNorm(nn.Module):
+    def __init__(self, hidden_size, eps: float = 1e-6) -> None:
+        super().__init__()
+        self.weight = nn.Parameter(torch.ones(hidden_size))
+        self.variance_epsilon = eps
+
+    def forward(self, hidden_states: torch.Tensor) -> torch.Tensor:
+        input_dtype = hidden_states.dtype
+        hidden_states = hidden_states.to(torch.float32)
+        variance = hidden_states.pow(2).mean(-1, keepdim=True)
+        hidden_states = hidden_states * torch.rsqrt(variance + self.variance_epsilon)
+        return self.weight * hidden_states.to(input_dtype)
+```
