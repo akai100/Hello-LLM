@@ -77,18 +77,19 @@ class Qwen3Attention(nn.Module):
 
 数学公式：
 
-+ 注意力头数为 32
-+ 注意力头维度 128
-  
-$$W_q \in R^{4096 \times 4096}, 4096 = 32 \times 128$$
+设输入: $X \in R^{Batch \times seq\\_len \times n\\_dim}$
 
-$$w_k \in R^{4096 \times 1024}, 1024 = 8 \times 128$$
++ 查询头总数：$N_q$
 
-$$w_v \in R^{4096 \times 1024}, 1024 = 8 \times 128$$
++ 键值头总数：$N_{kv}$
 
-$$Q = X^{2 \times 512 \times 4096} \times  W_{q}^{4096 \times 4096} = R^{2 \times 512 \times 4096} = R^{2 \times 512 \times 32 \times 128} -> R^{2 \times 32 \times 512 \times 128}$$ 
++ 分组数：$G=N_q/N_{kb}$，每组包含的 Query 头数量
 
-$$K = X^{2 \times 512 \times 4096} \times W_{k}^{4096 \times 1024} = R^{2 \times 512 \times 1024} = R^{2 \times 512 \times 8 \times 128} -> R^{2 \times 8 \times 512 \times 128} --expand--> R^{2 \times 8 \times 8 \times 512 \times 128}$$
++ 头维度：$d_k=d_v=d_{head}$，每个头的特征维度
 
-$$V = X^{2 \times 512 \times 4096} \times W_{v}^{4096 \times 1024}=R^{2 \times 512 \times 1024}=R^{2 \times 512 \times 8 \times 128} -> R^{2 \times 8 \times 512 \times 128} -expend--> R^{2 \times 8 \times 8 \times 512 \times 128}$$
++ 模型维度：$d_{model}$，Transformer 层输入/输出维度
+
+
+
++ 查询权重： $W_q \in R^{n\\_dim \times n\\_dim}$
 
