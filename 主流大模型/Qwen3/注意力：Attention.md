@@ -77,6 +77,18 @@ class Qwen3Attention(nn.Module):
 
 数学公式：
 
-$$W_q \in R^{hidden\\_size \times hidden\\_size}$$
++ 注意力头数为 32
++ 注意力头维度 128
+  
+$$W_q \in R^{4096 \times 4096}, 4096 = 32 \times 128$$
 
-$$w_k \in R^{hiddem\\_size \times (num_k_v_head * head_dim)}$$
+$$w_k \in R^{4096 \times 1024}, 1024 = 8 \times 128$$
+
+$$w_v \in R^{4096 \times 1024}, 1024 = 8 \times 128$$
+
+$$Q = X^{2 \times 512 \times 4096} \times  W_{q}^{4096 \times 4096} = R^{2 \times 512 \times 4096} = R^{2 \times 512 \times 32 \times 128} -> R^{2 \times 32 \times 512 \times 128}$$ 
+
+$$K = X^{2 \times 512 \times 4096} \times W_{k}^{4096 \times 1024} = R^{2 \times 512 \times 1024} = R^{2 \times 512 \times 8 \times 128} -> R^{2 \times 8 \times 512 \times 128} --expand--> R^{2 \times 8 \times 8 \times 512 \times 128}$$
+
+$$V = X^{2 \times 512 \times 4096} \times W_{v}^{4096 \times 1024}=R^{2 \times 512 \times 1024}=R^{2 \times 512 \times 8 \times 128} -> R^{2 \times 8 \times 512 \times 128} -expend--> R^{2 \times 8 \times 8 \times 512 \times 128}$$
+
