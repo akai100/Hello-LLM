@@ -77,19 +77,44 @@ class Qwen3Attention(nn.Module):
 
 数学公式：
 
-设输入: $X \in R^{Batch \times seq\\_len \times n\\_dim}$
++ 查询头总数： $N_q$
 
-+ 查询头总数：$N_q$
++ 键值头总数： $N_{kv}$
 
-+ 键值头总数：$N_{kv}$
++ 分组数： $G=N_q/N_{kb}$，每组包含的 Query 头数量
 
-+ 分组数：$G=N_q/N_{kb}$，每组包含的 Query 头数量
++ 头维度： $d_k=d_v=d_{head}$，每个头的特征维度
 
-+ 头维度：$d_k=d_v=d_{head}$，每个头的特征维度
-
-+ 模型维度：$d_{model}$，Transformer 层输入/输出维度
++ 模型维度： $d_{model}$，Transformer 层输入/输出维度
 
 
++ 查询权重：  $W_q \in R^{d_{model} \times d_{model}}$
 
-+ 查询权重： $W_q \in R^{n\\_dim \times n\\_dim}$
++ 键权重： $W_k \in R^{d_{model} \times (N_{kv} * d_{head})}$
+
++ 值权重： $W_v \in R^{d_{model} \times (N_{kv} * d_{head})}$
+
++ $X \in R^{B \times L \times d_{model}}$
+
+$$Q = X \cdot W_q \in R^{B \times L \times d_{model}}$$
+
+将Q重新view： $Q \in R^{B \times L \times N_q \times d_{head}}$
+
+将 $Q$的第1维和第2维转置: $Q \in R^{B \times N_q \times L \times d_{head}}$
+
+$$K = X \cdot W_k \in R^{B \times L \times (N_{kv} * d_{head})}$$
+
+将K重新view： $$K \in R^{B \times L \times N_{kv} \times d_{head}}$$
+
+将 $K$ 的第1维和第2维转置: $K \in R^{B \times N_{kv} \times L \times d_{head}}$
+
+$$V = X \cdot W_v \in R^{B \times L \times (N_{kv} * d_{head})}$$
+
+将V重新view： $$V \in R^{B \times L \times N_{kv} \times d_{head}}$$
+
+将 $V$ 的第1维和第2维转置: $V \in R^{B \times N_{kv} \times L \times d_{head}}$
+
+步骤二：KV 复制
+
+对 K, V 复制 G 次 分配（内部通过stride 实现，不会新增空间）：（K, V \in R^{d}）
 
