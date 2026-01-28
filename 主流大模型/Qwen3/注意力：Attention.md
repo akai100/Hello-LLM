@@ -73,3 +73,10 @@ class Qwen3Attention(nn.Module):
         attn_output = self.o_proj(attn_output)
         return attn_output, attn_weights
 ```
+
+
+数学公式：
+
+$$W_q \in R^{hidden\\_size \times hidden\\_size}$$
+
+$$w_k \in R^{hiddem\\_size \times (num_k_v_head * head_dim)}$$
