@@ -43,4 +43,34 @@ $$\theta_{i}^{'}=\theta_i \cdot s^{-2(i-1)/(d-2)}$$
 
 关键特性：
 
-+ 当 
++ 当 i→1（高频维度）： $\theta_{i}^{'}$缩放因子 $\approx 1$ → 几乎不缩放；
++ 当 $i \rightarrow d/2$： $\theta_{i}^{'}$缩放因子 $\approx 1/s$ → 充分缩放；
+
+
+## 3. Dynamic NTK：避免短文本性能下降
+
+### 3.1 问题
+
+标准 NTK-aware 始终使用新基数，导致：
+
++ 短序列（<训练长度）性能下降 3–5%
+
++ 原因：高频维度过度保留，破坏原有位置分布 
+
+### 3.2 解决方案：动态切换
+
+```python3
+def dynamic_ntk_rope(q, k, positions, base=10000, max_train_len=2048, dim=4096):
+    seq_len = positions.max().item() + 1
+    
+    if seq_len <= max_train_len:
+        # 短序列：使用原始基数（零开销）
+        new_base = base
+    else:
+        # 长序列：动态计算缩放因子
+        scale_factor = seq_len / max_train_len
+        alpha = dim / (dim - 2)
+        new_base = base * (scale_factor ** alpha)
+    
+    # 后续与 NTK-aware 相同...
+```
