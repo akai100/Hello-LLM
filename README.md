@@ -16,6 +16,7 @@
       + [层归一化](https://github.com/akai100/Hello-LLM/blob/main/%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/%E5%BD%92%E4%B8%80%E5%8C%96/Layer%20Normalization%EF%BC%88%E5%B1%82%E5%BD%92%E4%B8%80%E5%8C%96%EF%BC%89.md)
       + [RMSNorm](https://github.com/akai100/Hello-LLM/blob/main/%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/%E5%BD%92%E4%B8%80%E5%8C%96/RMSNorm.md)
     + [激活函数](https://github.com/akai100/Hello-LLM/tree/main/%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0)
+      + [传统激活函数](https://github.com/akai100/Hello-LLM/blob/main/%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/%E4%BC%A0%E7%BB%9F%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0.md)
       + [GELU](https://github.com/akai100/Hello-LLM/blob/main/%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/GELU.md)
       + [GLU](https://github.com/akai100/Hello-LLM/blob/main/%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/GLU.md)
       + [GeGLU](https://github.com/akai100/Hello-LLM/blob/main/%E6%A8%A1%E5%9E%8B%E6%9E%B6%E6%9E%84/%E6%A0%B8%E5%BF%83%E7%BB%84%E4%BB%B6/%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0/GeGLU.md)
