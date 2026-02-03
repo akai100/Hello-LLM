@@ -2,3 +2,5 @@
 ## [002. LLM训练中有哪些学习率和batch设置的经验trick？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/002.%20LLM%E8%AE%AD%E7%BB%83%E4%B8%AD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%AD%A6%E4%B9%A0%E7%8E%87%E5%92%8Cbatch%E8%AE%BE%E7%BD%AE%E7%9A%84%E7%BB%8F%E9%AA%8Ctrick%EF%BC%9F.md)
 
 ## [003. 如何将prompt和微调结合？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/003.%20%E5%A6%82%E4%BD%95%E5%B0%86prompt%E5%92%8C%E5%BE%AE%E8%B0%83%E7%BB%93%E5%90%88%EF%BC%9F.md)
+
+## [004. 怎么从特别多的prompt验证你的prompt最好?](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/004.%20%E6%80%8E%E4%B9%88%E4%BB%8E%E7%89%B9%E5%88%AB%E5%A4%9A%E7%9A%84prompt%E9%AA%8C%E8%AF%81%E4%BD%A0%E7%9A%84prompt%E6%9C%80%E5%A5%BD%3F.md)
