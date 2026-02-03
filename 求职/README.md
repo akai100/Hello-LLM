@@ -1,1 +1,2 @@
 ## [001. Attention为什么要除以根号d？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/001.%20Attention%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%99%A4%E4%BB%A5%E6%A0%B9%E5%8F%B7d%EF%BC%9F.md)
+## [002. LLM训练中有哪些学习率和batch设置的经验trick？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/002.%20LLM%E8%AE%AD%E7%BB%83%E4%B8%AD%E6%9C%89%E5%93%AA%E4%BA%9B%E5%AD%A6%E4%B9%A0%E7%8E%87%E5%92%8Cbatch%E8%AE%BE%E7%BD%AE%E7%9A%84%E7%BB%8F%E9%AA%8Ctrick%EF%BC%9F.md)
