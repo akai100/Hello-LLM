@@ -4,3 +4,5 @@
 ## [003. 如何将prompt和微调结合？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/003.%20%E5%A6%82%E4%BD%95%E5%B0%86prompt%E5%92%8C%E5%BE%AE%E8%B0%83%E7%BB%93%E5%90%88%EF%BC%9F.md)
 
 ## [004. 怎么从特别多的prompt验证你的prompt最好?](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/004.%20%E6%80%8E%E4%B9%88%E4%BB%8E%E7%89%B9%E5%88%AB%E5%A4%9A%E7%9A%84prompt%E9%AA%8C%E8%AF%81%E4%BD%A0%E7%9A%84prompt%E6%9C%80%E5%A5%BD%3F.md)
+
+## [005. 你认为好的prompt 的范式是什么?](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/005.%20%E4%BD%A0%E8%AE%A4%E4%B8%BA%E5%A5%BD%E7%9A%84prompt%20%E7%9A%84%E8%8C%83%E5%BC%8F%E6%98%AF%E4%BB%80%E4%B9%88%3F.md)
