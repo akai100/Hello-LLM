@@ -10,3 +10,5 @@
 ## [006. 数据清洗流程](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/006.%20%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97%E6%B5%81%E7%A8%8B.md)
 
 ## [007. 如何解决幻觉、复读机问题？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/007.%20%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%B9%BB%E8%A7%89%E3%80%81%E5%A4%8D%E8%AF%BB%E6%9C%BA%E9%97%AE%E9%A2%98%EF%BC%9F.md)
+
+## [008. transformer内部的注意力机制的不同之处](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/008.%20transformer%E5%86%85%E9%83%A8%E7%9A%84%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%E7%9A%84%E4%B8%8D%E5%90%8C%E4%B9%8B%E5%A4%84.md)
