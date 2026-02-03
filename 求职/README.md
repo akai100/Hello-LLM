@@ -8,3 +8,5 @@
 ## [005. 你认为好的prompt 的范式是什么?](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/005.%20%E4%BD%A0%E8%AE%A4%E4%B8%BA%E5%A5%BD%E7%9A%84prompt%20%E7%9A%84%E8%8C%83%E5%BC%8F%E6%98%AF%E4%BB%80%E4%B9%88%3F.md)
 
 ## [006. 数据清洗流程](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/006.%20%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97%E6%B5%81%E7%A8%8B.md)
+
+## [007. 如何解决幻觉、复读机问题？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/007.%20%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%B9%BB%E8%A7%89%E3%80%81%E5%A4%8D%E8%AF%BB%E6%9C%BA%E9%97%AE%E9%A2%98%EF%BC%9F.md)
