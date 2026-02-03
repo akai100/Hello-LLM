@@ -6,3 +6,5 @@
 ## [004. 怎么从特别多的prompt验证你的prompt最好?](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/004.%20%E6%80%8E%E4%B9%88%E4%BB%8E%E7%89%B9%E5%88%AB%E5%A4%9A%E7%9A%84prompt%E9%AA%8C%E8%AF%81%E4%BD%A0%E7%9A%84prompt%E6%9C%80%E5%A5%BD%3F.md)
 
 ## [005. 你认为好的prompt 的范式是什么?](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/005.%20%E4%BD%A0%E8%AE%A4%E4%B8%BA%E5%A5%BD%E7%9A%84prompt%20%E7%9A%84%E8%8C%83%E5%BC%8F%E6%98%AF%E4%BB%80%E4%B9%88%3F.md)
+
+## [006. 数据清洗流程](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/006.%20%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97%E6%B5%81%E7%A8%8B.md)
