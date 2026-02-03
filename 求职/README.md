@@ -13,4 +13,4 @@
 
 ## [008. transformer内部的注意力机制的不同之处](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/008.%20transformer%E5%86%85%E9%83%A8%E7%9A%84%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%E7%9A%84%E4%B8%8D%E5%90%8C%E4%B9%8B%E5%A4%84.md)
 
-## [009. https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/009.%20llama123%E7%9A%84%E5%8C%BA%E5%88%AB.md]
+## [009. llama123的区别](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/009.%20llama123%E7%9A%84%E5%8C%BA%E5%88%AB.md)
