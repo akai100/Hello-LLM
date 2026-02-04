@@ -82,3 +82,5 @@
 #### [🔗 040. 为什么大模型推理速度瓶颈在注意力？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/040.%20%E4%B8%BA%E4%BB%80%E4%B9%88%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E9%80%9F%E5%BA%A6%E7%93%B6%E9%A2%88%E5%9C%A8%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%9F.md)
 
 #### [🔗 041. LLM as a Judge 评估时需要注意什么？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/041.%20%20LLM%20as%20a%20Judge%20%E8%AF%84%E4%BC%B0%E6%97%B6%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E4%BB%80%E4%B9%88%EF%BC%9F.md)
+
+#### [🔗 042. 既然 LLM 有偏见，为什么不直接用 BLEU 或 ROUGE 评分？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/042.%20%20%E6%97%A2%E7%84%B6%20LLM%20%E6%9C%89%E5%81%8F%E8%A7%81%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%9B%B4%E6%8E%A5%E7%94%A8%20BLEU%20%E6%88%96%20ROUGE%20%E8%AF%84%E5%88%86%EF%BC%9F.md)
