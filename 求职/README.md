@@ -62,3 +62,5 @@
 #### [031. 激活函数如何影响梯度消失\爆炸？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/031.%20%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%A6%82%E4%BD%95%E5%BD%B1%E5%93%8D%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%5C%E7%88%86%E7%82%B8%EF%BC%9F.md)
 
 #### [032. 激活函数如何影响初始化策略？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/032.%20%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%A6%82%E4%BD%95%E5%BD%B1%E5%93%8D%E5%88%9D%E5%A7%8B%E5%8C%96%E7%AD%96%E7%95%A5%EF%BC%9F.md)
+
+#### [033. LayerNorm + GELU 为什么是 Transformer 标配？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/033.%20LayerNorm%20%2B%20GELU%20%E4%B8%BA%E4%BB%80%E4%B9%88%E6%98%AF%20Transformer%20%E6%A0%87%E9%85%8D%EF%BC%9F.md)
