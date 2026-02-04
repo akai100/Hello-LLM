@@ -28,3 +28,5 @@
 ## [015. SFT 后效果“线下很好，线上大崩”](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/015.%20SFT%20%E5%90%8E%E6%95%88%E6%9E%9C%E2%80%9C%E7%BA%BF%E4%B8%8B%E5%BE%88%E5%A5%BD%EF%BC%8C%E7%BA%BF%E4%B8%8A%E5%A4%A7%E5%B4%A9%E2%80%9D.md)
 
 ## [016. 微调后线上推理 OOM，训练时却没问题](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/016.%20%E5%BE%AE%E8%B0%83%E5%90%8E%E7%BA%BF%E4%B8%8A%E6%8E%A8%E7%90%86%20OOM%EF%BC%8C%E8%AE%AD%E7%BB%83%E6%97%B6%E5%8D%B4%E6%B2%A1%E9%97%AE%E9%A2%98.md)
+
+## [017. 为什么深度神经网络需要参数初始化？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/017.%20%E4%B8%BA%E4%BB%80%E4%B9%88%E6%B7%B1%E5%BA%A6%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E9%9C%80%E8%A6%81%E5%8F%82%E6%95%B0%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%9F.md)
