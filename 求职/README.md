@@ -78,3 +78,5 @@
 
 
 #### [039. 推理时 KV Cache 是什么？MQA\GQA 如何优化 KV Cache？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/039.%20%E6%8E%A8%E7%90%86%E6%97%B6%20KV%20Cache%20%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9FMQA%5CGQA%20%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%20KV%20Cache%EF%BC%9F.md)
+
+#### [040. 为什么大模型推理速度瓶颈在注意力？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/040.%20%E4%B8%BA%E4%BB%80%E4%B9%88%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E9%80%9F%E5%BA%A6%E7%93%B6%E9%A2%88%E5%9C%A8%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%9F.md)
