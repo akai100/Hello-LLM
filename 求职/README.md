@@ -36,3 +36,5 @@
 ## [019. 方差为什么要与 fan_infan_out 相关？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/019.%20%E6%96%B9%E5%B7%AE%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%B8%8E%20fan_infan_out%20%E7%9B%B8%E5%85%B3%EF%BC%9F.md)
 
 ## [020. 训练深层网络梯度一直消失，你会怎么排查？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/020.%20%E8%AE%AD%E7%BB%83%E6%B7%B1%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A2%AF%E5%BA%A6%E4%B8%80%E7%9B%B4%E6%B6%88%E5%A4%B1%EF%BC%8C%E4%BD%A0%E4%BC%9A%E6%80%8E%E4%B9%88%E6%8E%92%E6%9F%A5%EF%BC%9F.md)
+
+## [021. 如果 Xavier 初始化失败，改成 He 会有帮助吗？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/021.%20%E5%A6%82%E6%9E%9C%20Xavier%20%E5%88%9D%E5%A7%8B%E5%8C%96%E5%A4%B1%E8%B4%A5%EF%BC%8C%E6%94%B9%E6%88%90%20He%20%E4%BC%9A%E6%9C%89%E5%B8%AE%E5%8A%A9%E5%90%97%EF%BC%9F.md)
