@@ -44,3 +44,5 @@
 ## [023. Transformer 的 linear 和 attention 权重怎么初始化？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/023.%20Transformer%20%E7%9A%84%20linear%20%E5%92%8C%20attention%20%E6%9D%83%E9%87%8D%E6%80%8E%E4%B9%88%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%9F.md)
 
 ## [024. 多任务学习中，不同任务共享的参数初始化策略是什么？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/024.%20%E5%A4%9A%E4%BB%BB%E5%8A%A1%E5%AD%A6%E4%B9%A0%E4%B8%AD%EF%BC%8C%E4%B8%8D%E5%90%8C%E4%BB%BB%E5%8A%A1%E5%85%B1%E4%BA%AB%E7%9A%84%E5%8F%82%E6%95%B0%E5%88%9D%E5%A7%8B%E5%8C%96%E7%AD%96%E7%95%A5%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F.md)
+
+## [025. 预训练的文本被截断怎么办？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/025.%20%E9%A2%84%E8%AE%AD%E7%BB%83%E7%9A%84%E6%96%87%E6%9C%AC%E8%A2%AB%E6%88%AA%E6%96%AD%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F.md)
