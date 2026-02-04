@@ -34,3 +34,5 @@
 ## [018. Xavier 初始化和 He 初始化有什么区别？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/018.%20%20Xavier%20%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%20He%20%E5%88%9D%E5%A7%8B%E5%8C%96%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F.md)
 
 ## [019. 方差为什么要与 fan_infan_out 相关？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/019.%20%E6%96%B9%E5%B7%AE%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E4%B8%8E%20fan_infan_out%20%E7%9B%B8%E5%85%B3%EF%BC%9F.md)
+
+## [020. 训练深层网络梯度一直消失，你会怎么排查？]()
