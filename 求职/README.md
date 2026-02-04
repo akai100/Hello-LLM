@@ -67,3 +67,5 @@
 
 
 #### [034. 激活函数在 LoRA\微调中是否需要调整？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/034.%20%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%9C%A8%20LoRA%5C%E5%BE%AE%E8%B0%83%E4%B8%AD%E6%98%AF%E5%90%A6%E9%9C%80%E8%A6%81%E8%B0%83%E6%95%B4%EF%BC%9F.md)
+
+#### [035. 解释 FlashAttention 的分块、重计算、重排访存](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/035.%20%E8%A7%A3%E9%87%8A%20FlashAttention%20%E7%9A%84%E5%88%86%E5%9D%97%E3%80%81%E9%87%8D%E8%AE%A1%E7%AE%97%E3%80%81%E9%87%8D%E6%8E%92%E8%AE%BF%E5%AD%98.md)
