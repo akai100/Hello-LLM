@@ -26,3 +26,5 @@
 ## [014. LoRA 在推理阶段是否会增加延迟？为什么？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/014.%20LoRA%20%E5%9C%A8%E6%8E%A8%E7%90%86%E9%98%B6%E6%AE%B5%E6%98%AF%E5%90%A6%E4%BC%9A%E5%A2%9E%E5%8A%A0%E5%BB%B6%E8%BF%9F%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F.md)
 
 ## [015. SFT 后效果“线下很好，线上大崩”](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/015.%20SFT%20%E5%90%8E%E6%95%88%E6%9E%9C%E2%80%9C%E7%BA%BF%E4%B8%8B%E5%BE%88%E5%A5%BD%EF%BC%8C%E7%BA%BF%E4%B8%8A%E5%A4%A7%E5%B4%A9%E2%80%9D.md)
+
+## [016. 微调后线上推理 OOM，训练时却没问题]()
