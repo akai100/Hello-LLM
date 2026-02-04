@@ -73,3 +73,5 @@
 #### [036. 长序列（如 8k\32k\128k）如何做注意力优化？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/036.%20%E9%95%BF%E5%BA%8F%E5%88%97%EF%BC%88%E5%A6%82%208k%5C32k%5C128k%EF%BC%89%E5%A6%82%E4%BD%95%E5%81%9A%E6%B3%A8%E6%84%8F%E5%8A%9B%E4%BC%98%E5%8C%96%EF%BC%9F.md)
 
 #### [037. 线性注意力的原理？与标准注意力的区别？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/037.%20%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%9A%84%E5%8E%9F%E7%90%86%EF%BC%9F%E4%B8%8E%E6%A0%87%E5%87%86%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F.md)
+
+#### [038. 稀疏注意力的常见策略（滑动窗口、全局 token、随机采样）？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/038.%20%E7%A8%80%E7%96%8F%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%9A%84%E5%B8%B8%E8%A7%81%E7%AD%96%E7%95%A5%EF%BC%88%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E3%80%81%E5%85%A8%E5%B1%80%20token%E3%80%81%E9%9A%8F%E6%9C%BA%E9%87%87%E6%A0%B7%EF%BC%89%EF%BC%9F.md)
