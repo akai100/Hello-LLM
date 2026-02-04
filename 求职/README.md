@@ -40,3 +40,5 @@
 ## [021. 如果 Xavier 初始化失败，改成 He 会有帮助吗？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/021.%20%E5%A6%82%E6%9E%9C%20Xavier%20%E5%88%9D%E5%A7%8B%E5%8C%96%E5%A4%B1%E8%B4%A5%EF%BC%8C%E6%94%B9%E6%88%90%20He%20%E4%BC%9A%E6%9C%89%E5%B8%AE%E5%8A%A9%E5%90%97%EF%BC%9F.md)
 
 ## [022. 大模型（如 BERT、GPT）Embedding 层如何初始化？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/022.%20%E5%A4%A7%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%A6%82%20BERT%E3%80%81GPT%EF%BC%89Embedding%20%E5%B1%82%E5%A6%82%E4%BD%95%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%9F.md)
+
+## [023. Transformer 的 linear 和 attention 权重怎么初始化？]()
