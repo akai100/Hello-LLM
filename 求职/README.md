@@ -41,4 +41,4 @@
 
 ## [022. 大模型（如 BERT、GPT）Embedding 层如何初始化？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/022.%20%E5%A4%A7%E6%A8%A1%E5%9E%8B%EF%BC%88%E5%A6%82%20BERT%E3%80%81GPT%EF%BC%89Embedding%20%E5%B1%82%E5%A6%82%E4%BD%95%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%9F.md)
 
-## [023. Transformer 的 linear 和 attention 权重怎么初始化？]()
+## [023. Transformer 的 linear 和 attention 权重怎么初始化？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/023.%20Transformer%20%E7%9A%84%20linear%20%E5%92%8C%20attention%20%E6%9D%83%E9%87%8D%E6%80%8E%E4%B9%88%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%9F.md)
