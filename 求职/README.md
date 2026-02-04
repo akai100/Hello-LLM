@@ -55,3 +55,5 @@
 #### [028. Transformer LLM 中常用的激活函数是什么？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/028.%20Transformer%20LLM%20%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F.md)
 
 #### [029. GELU 的直觉和公式](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/029.%20GELU%20%E7%9A%84%E7%9B%B4%E8%A7%89%E5%92%8C%E5%85%AC%E5%BC%8F.md)
+
+#### [030. 为什么 GELU 比 ReLU 更适合大模型？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/030.%20%E4%B8%BA%E4%BB%80%E4%B9%88%20GELU%20%E6%AF%94%20ReLU%20%E6%9B%B4%E9%80%82%E5%90%88%E5%A4%A7%E6%A8%A1%E5%9E%8B%EF%BC%9F.md)
