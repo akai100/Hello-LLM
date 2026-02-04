@@ -56,4 +56,7 @@
 
 #### [029. GELU 的直觉和公式](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/029.%20GELU%20%E7%9A%84%E7%9B%B4%E8%A7%89%E5%92%8C%E5%85%AC%E5%BC%8F.md)
 
+
+#### [031. 激活函数如何影响梯度消失\爆炸？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/031.%20%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%A6%82%E4%BD%95%E5%BD%B1%E5%93%8D%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%5C%E7%88%86%E7%82%B8%EF%BC%9F.md)
+
 #### [030. 为什么 GELU 比 ReLU 更适合大模型？](https://github.com/akai100/Hello-LLM/blob/main/%E6%B1%82%E8%81%8C/030.%20%E4%B8%BA%E4%BB%80%E4%B9%88%20GELU%20%E6%AF%94%20ReLU%20%E6%9B%B4%E9%80%82%E5%90%88%E5%A4%A7%E6%A8%A1%E5%9E%8B%EF%BC%9F.md)
