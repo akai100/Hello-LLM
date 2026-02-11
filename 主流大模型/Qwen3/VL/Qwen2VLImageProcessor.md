@@ -34,6 +34,7 @@ def preprocess(
     ):
 ```
 
+调用 ```fetch_images``` 将传入的图像数据转换成我们期望的格式，如果传入字符串。则加载图像成 PIL Image格式，字符串可以是路径或者网络图像。
 
 ```python3
 
