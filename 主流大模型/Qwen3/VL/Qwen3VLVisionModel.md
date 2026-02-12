@@ -1,5 +1,5 @@
 
-## ```__init__```
+## 1. ```__init__```
 
 ```python3
 def __init__(self, config, *inputs, **kwargs) -> None:
@@ -13,14 +13,14 @@ def __init__(self, config, *inputs, **kwargs) -> None:
     )
 ```
 
-## ```forward```
+## 2. ```forward```
 
 ```python3
 def forward(self, hidden_states: torch.Tensor, grid_thw: torch.Tensor, **kwargs) -> torch.Tensor:
     hidden_states = self.patch_embed(hidden_states)    # 调用 patch embedding 将输入图像转换为视觉 token 序列
 ```
 
-## ```fast_pos_embed_interpolate```
+## 3. ```fast_pos_embed_interpolate```
 
 用于生成高分辨率图像/视频的视觉位置编码的关键函数。它通过 双线性插值（bilinear interpolation） 从一个固定大小的位置嵌入表（如 24×24）动态生成任意分辨率（如 32×32、48×48）的位置编码，从而支持 多尺度输入。
 
