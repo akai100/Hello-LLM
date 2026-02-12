@@ -1,11 +1,11 @@
-## 定义
+## 1. 定义
 
 ```python3
 class Qwen2VLImageProcessor(BaseImageProcessor):
     ......
 ```
 
-## ```preprocess``
+## 2. ```preprocess```
 
 **定义：**
 
@@ -95,7 +95,7 @@ if images is not None:
     data.update({"pixel_values": pixel_values, "image_grid_thw": vision_grid_thws})
 ```
 
-## ```fetch_images```
+## 3. ```fetch_images```
 
 将传入的图像转换成我们期望的图像格式。
 
@@ -130,7 +130,7 @@ def fetch_images(self, image_url_or_urls: Union[str, list[str], list[list[str]]]
         raise TypeError(f"only a single or a list of entries is supported but got type={type(image_url_or_urls)}")
 ```
 
-## ```_preprocess```
+## 4.  ```_preprocess```
 
 **方法定义：**
 
