@@ -1,3 +1,4 @@
+## 1. ```__init__```
 ```python3
 class Qwen3VLModel(Qwen3VLPreTrainedModel):
     ......
@@ -7,7 +8,7 @@ class Qwen3VLModel(Qwen3VLPreTrainedModel):
         self.language_model = Qwen3VLTextModel._from_config(config.text_config)  # 大语言模型
 ```
 
-## ```forward```
+## 2. ```forward```
 
 ```python3
 def forward(
@@ -26,7 +27,7 @@ def forward(
     ) -> Union[tuple, Qwen3VLModelOutputWithPast]:
 ```
 
-**图像处理**
+**（1）图像处理**
 
 ```python
         if pixel_values is not None:
@@ -42,11 +43,18 @@ def forward(
 
 ## ```get_image_features```
 
+将图像像素值通过视觉编码器（```self.visual```）转换为嵌入向量（embeddings），并进一步处理这些嵌入以适应模型的输入需求。
+
+**（1）定义**
+
 ```python3
 def get_image_features(self, pixel_values: torch.FloatTensor, image_grid_thw: Optional[torch.LongTensor] = None):
     pixel_values = pixel_values.type(self.visual.dtype)
     image_embeds, deepstack_image_embeds = self.visual(pixel_values, grid_thw=image_grid_thw)
+    // 根据给定的 image_grid_thw 和 self.visual.spatial_merge_size 计算每个分割区域的大小，并将其转换为列表形式。
     split_sizes = (image_grid_thw.prod(-1) // self.visual.spatial_merge_size**2).tolist()
     image_embeds = torch.split(image_embeds, split_sizes)
     return image_embeds, deepstack_image_embeds
 ```
+
+**（2）
