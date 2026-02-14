@@ -19,10 +19,24 @@
 
 ```python3
     def forward(self, hidden_states: torch.Tensor) -> torch.Tensor:
+```
+（1）获取目标数据类型
+
+```python3
         target_dtype = self.proj.weight.dtype
+```
+
+（2）
+
+```python3
         hidden_states = hidden_states.view(
             -1, self.in_channels, self.temporal_patch_size, self.patch_size, self.patch_size
         )
+```
+
+（3）类型转换并进行线性投影：将每个时空 patch 映射到一个固定维度的嵌入向量
+
+```python3
         hidden_states = self.proj(hidden_states.to(dtype=target_dtype)).view(-1, self.embed_dim)
         return hidden_states
 ````
