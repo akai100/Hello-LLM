@@ -180,3 +180,99 @@ def forward(self, hidden_states: torch.Tensor, grid_thw: torch.Tensor, **kwargs)
         patch_pos_embeds = torch.cat(patch_pos_embeds_permute)
         return patch_pos_embeds
 ```
+
+## ```rot_pos_emb```
+
+功能：为 Transformer 生成 RoPE 位置嵌入。
+
+```python
+def rot_pos_emb(self, grid_thw: torch.Tensor) -> torch.Tensor:
+```
+
++ 输出
+
+  + grid_thw
+
+    形状为 ```(B, 3)`` 的张量，表示每个样本的 ```[T, H, W]```（帧数、高度、宽度）
+
++ 输出
+
+  形状为 ```(total_tokens, dim)``` 的 RoPE 位置嵌入，其中 ```dim``` 是旋转嵌入的维度
+
+```python
+    merge_size = self.spatial_merge_size
+```
+
++ 获取空间合并因子（例如 2），表示每 merge_size × merge_size 个原始像素被合并成一个 token
+
++ 这常见于 ViT 中的 patch embedding（如 14x14 图像 → 7x7 tokens，若 merge_size=2）
+
+```python
+    max_hw = int(grid_thw[:, 1:].max().item())
+    freq_table = self.rotary_pos_emb(max_hw)
+```
+
++ ```grid_thw[:, 1:]``` 取所有样本的 ```[H, W]```，找最大值（即最大高/宽）
+
++ 调用 ```self.rotary_pos_emb(max_hw)``` 生成一个预计算的 RoPE 频率表，形状为 (max_hw, dim // 2)
+
+```python
+    device = freq_table.device
+```
+
++ 获取设备（CPU/GPU），后续创建张量时保持一致
+
+```python
+    total_tokens = int(torch.prod(grid_thw, dim=1).sum().item())
+    pos_ids = torch.empty((total_tokens, 2), dtype=torch.long, device=device)
+```
+
++ 计算所有样本的总 token 数：对每个样本 ```T * H * W``` 求和
+
++ 创建一个空的 ```pos_ids``` 张量，用于存储每个 token 的 ```(row, col)``` 坐标（2D 位置）
+
+```python
+    offset = 0
+```
+
++ 用于在 ```pos_ids``` 中按样本顺序写入坐标的偏移指针
+
+```python
+    for num_frames, height, width in grid_thw:
+```
+
++ 对 batch 中每个视频/图像样本，解包其```(T, H, W)```
+
+```python
+        merged_h, merged_w = height // merge_size, width // merge_size
+```
+
++ 计算合并后的网格大小（即 token 网格尺寸）
+
++ 例如：原始图像 224x224，merge_size=16 → 14x14 tokens
+
+```python
+        block_rows = torch.arange(merged_h, device=device)  # block row indices
+        block_cols = torch.arange(merged_w, device=device)  # block col indices
+        intra_row = torch.arange(merge_size, device=device)  # intra-block row offsets
+        intra_col = torch.arange(merge_size, device=device)  # intra-block col offsets
+```
+
++ ```block_rows/cols```：每个 token 块在合并网格中的行列索引
+
++ ```intra_row/col```：每个块内部的像素偏移（0 到 merge_size-1）
+
+```python
+        row_idx = block_rows[:, None, None, None] * merge_size + intra_row[None, None, :, None]
+        col_idx = block_cols[None, :, None, None] * merge_size + intra_col[None, None, None, :]
+```
+
+通过广播机制，生成所有原始像素位置（未合并前）的坐标
+
++ ```block_rows[:, None, None, None]``` 形状 ```(merged_h, 1, 1, 1)```
+
++ ```intra_row[None, None, :, None]``` 形状 ```(1, 1, merge_size, 1)```
+
++ 相加后得到 ```(merged_h, merged_w, merge_size, merge_size)``` 的 ```row_idx```，表示每个 token 对应的原始行坐标
+
++ 同理 ```col_idx``` 是列坐标
