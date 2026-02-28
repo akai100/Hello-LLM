@@ -13,9 +13,38 @@ class Qwen3RMSNorm(nn.Module):
         return self.weight * hidden_states.to(input_dtype)
 ```
 
+## 2. ```forward```
+
+### 计算每个向量的均方
+
+```python
+variance = hidden_states.pow(2).mean(-1, keepdim=True)
+```
+
+计算每个Token的均方： $variance \in R^{B \times SEQ_LEN \times 1}$
+
+
+### 归一化
+
+```python
+# 4. 归一化：x / sqrt(mean(x²) + ε)
+hidden_states = hidden_states * torch.rsqrt(variance + self.variance_epsilon)
+```
+
+### 用于可学习缩放因子
+
+```python
+return self.weight * hidden_states.to(input_dtype)
+```
+
++ 可学习参数，初始化通常为全 1（nn.Parameter(torch.ones(d_model))）
+
++ 允许模型“撤销”归一化（如果需要），保留表达能力
+
+
 对应公式：
 
-$$ \frac{X}{\sqrt{Mean(x^2) + \epsilon}}$$
+$$ \frac{X}{\sqrt{Mean(x^2) + \epsilon}} \cdot \gamma$$
 
 与通用 RMSNorm 的差异：
 
