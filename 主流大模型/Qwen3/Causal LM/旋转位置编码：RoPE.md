@@ -67,9 +67,9 @@ class Qwen3RotaryEmbedding(nn.Module):
 
 ```Qwen3RotaryEmbedding```主要功能为实现位置和角速度的乘积，然后计算 cos 和 sin。
 
-```inv_freq_expanded``` 扩展成 $R^{1 \times d_{dim} \times 1}$
+```inv_freq_expanded``` 扩展成 $R^{B \times d_{dim} \times 1}$
 
-```position_ids_expanded```扩展成 $R^{1 \times 1 \times SEQ_LEN}$
+```position_ids_expanded```扩展成 $R^{B \times 1 \times SEQ_LEN}$
 
 
 $$ cos = 
@@ -80,6 +80,53 @@ w_1 p0 & w_1 p2 & ... & w_1 p_{SEQ_LEN}\\
 w_{d_{dim}/2} p0 & w_{d_{dim}/2} p_1& ... & w_{d_{dim}/2} p_{SEQ_LEM}
 \end{pmatrix}
 $$
+
+### 强制在 float32 下计算
+
+```python
+with torch.autocast(device_type=device_type, enabled=False):
+```
+
++ 在 混合精度训练（AMP） 或 bfloat16 推理 中，x.dtype 可能是 bfloat16 或 float16
+
++ 但 $cos(mθ) / sin(m\theta)$ 在长序列下对数值精度敏感：
+  + float16 的精度不足 → 高频部分（大 m）三角函数值失真
+  + 导致 RoPE 失效，注意力混乱
+
+### 计算频率
+
+```
+freqs = (inv_freq_expanded.float() @ position_ids_expanded.float()).transpose(1, 2)
+```
+
++ 矩阵乘：```(B, d//2, 1) @ (B, 1, S)``` → (B, d//2, S)```
++ ```.transpose(1, 2)``` → ```(B, S, d//2)```
+
+### 构造完整的 embedding(偶数+基数)
+
+```python
+emb = torch.cat((freqs, freqs), dim=-1)  # (B, S, d)
+```
+
++ 将 ```(B, S, d//2)``` 拼接成 ```(B, S, d)```
+
+
+### 应用缩放因子
+
+```python
+cos = emb.cos() * self.attention_scaling
+sin = emb.sin() * self.attention_scaling
+```
+
+## 与传统 RoPE 缓存方式的区别
+
+| 方式 | 传统 RoPE（LLaMA 原始） | 你提供的动态 RoPE（Qwen3 风格） |
+|------|------------------------|-------------------------------|
+| 缓存策略 | 预计算 `max_seq_len` 的 cos/sin | 每次 forward 动态计算 |
+| 内存占用 | 高（需存 2 × max_len × d） | 低（按需计算） |
+| 灵活性 | 固定长度 | 支持任意 `position_ids`（如非连续、滑动窗口） |
+| 适用场景 | 标准自回归生成 | 长上下文、稀疏注意力、工具调用等复杂场景 |
+
 
 ## 应用到Q、K
 
