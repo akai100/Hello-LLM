@@ -28,7 +28,11 @@ class Qwen3Attention(nn.Module):
         self.k_norm = Qwen3RMSNorm(self.head_dim, eps=config.rms_norm_eps)  # thus post q_norm does not need reshape
         self.sliding_window = config.sliding_window if config.layer_types[layer_idx] == "sliding_attention" else None
 
-    @deprecate_kwarg("past_key_value", new_name="past_key_values", version="4.58")
+```
+
+## 2. ```forward```
+
+```python
     def forward(
         self,
         hidden_states: torch.Tensor,
@@ -74,47 +78,86 @@ class Qwen3Attention(nn.Module):
         return attn_output, attn_weights
 ```
 
+### 2.1 输入形状准备
 
-数学公式：
+```python
+input_shape = hidden_states.shape[:-1]            # (B, S)
+hidden_shape = (*input_shape, -1, self.head_dim)  # (B, S, num_heads, head_dim)
+```
 
-+ 查询头总数： $N_q$
++ ```hidden_states```: ```(B, S, d_model)```
++ ```hidden_shape``` 用于后续 ```.view()``` 拆分为多头：
+  (B, S, d_model) → (B, S, num_heads, head_dim)
 
-+ 键值头总数： $N_{kv}$
+### 2.2 Q/K/V 投影 + 归一化
 
-+ 分组数： $G=N_q/N_{kb}$，每组包含的 Query 头数量
+```python
+query_states = self.q_norm(self.q_proj(hidden_states).view(hidden_shape)).transpose(1, 2)
+key_states = self.k_norm(self.k_proj(hidden_states).view(hidden_shape)).transpose(1, 2)
+value_states = self.v_proj(hidden_states).view(hidden_shape).transpose(1, 2)
+```
 
-+ 头维度： $d_k=d_v=d_{head}$，每个头的特征维度
++ ```self.q_proj```
 
-+ 模型维度： $d_{model}$，Transformer 层输入/输出维度
+  线性层变换，$X^{B \times S \times HiddenSize} \times Q^{Hiddensize \times \HiddenSize} + b(如果有)$
 
++ ```.view()```
 
-+ 查询权重：  $W_q \in R^{d_{model} \times d_{model}}$
+  将经过Q映射后的形状转换为 ```(B, S, H, D)```
 
-+ 键权重： $W_k \in R^{d_{model} \times (N_{kv} * d_{head})}$
++ ```.transpose(1, 2)``` → (B, H, S, D)
 
-+ 值权重： $W_v \in R^{d_{model} \times (N_{kv} * d_{head})}$
+  变为后续 attention 计算：```(B, H, S, D) x (B, H, D, S_k)```
 
-+ $X \in R^{B \times L \times d_{model}}$
+### 2.3 应用旋转位置编码
 
-$$Q = X \cdot W_q \in R^{B \times L \times d_{model}}$$
+```python
+cos, sin = position_embeddings
+query_states, key_states = apply_rotary_pos_emb(query_states, key_states, cos, sin)
+```
 
-将Q重新view： $Q \in R^{B \times L \times N_q \times d_{head}}$
+### 2.4 KV Cache 更新
 
-将 $Q$的第1维和第2维转置: $Q \in R^{B \times N_q \times L \times d_{head}}$
+```python
+if past_key_values is not None:
+    cache_kwargs = {"sin": sin, "cos": cos, "cache_position": cache_position}
+    key_states, value_states = past_key_values.update(key_states, value_states, self.layer_idx, cache_kwargs)
+```
 
-$$K = X \cdot W_k \in R^{B \times L \times (N_{kv} * d_{head})}$$
+### 2.5 动态选择注意力实现后端
 
-将K重新view： $$K \in R^{B \times L \times N_{kv} \times d_{head}}$$
+```python
+if past_key_values is not None:
+    cache_kwargs = {"sin": sin, "cos": cos, "cache_position": cache_position}
+    key_states, value_states = past_key_values.update(key_states, value_states, self.layer_idx, cache_kwargs)
+```
 
-将 $K$ 的第1维和第2维转置: $K \in R^{B \times N_{kv} \times L \times d_{head}}$
+### 2.6 调用注意力内核
 
-$$V = X \cdot W_v \in R^{B \times L \times (N_{kv} * d_{head})}$$
+```python
+attn_output, attn_weights = attention_interface(
+    self,
+    query_states,
+    key_states,
+    value_states,
+    attention_mask,
+    dropout=0.0 if not self.training else self.attention_dropout,
+    scaling=self.scaling,
+    sliding_window=self.sliding_window,  # ← Qwen3/Mistral 特有！
+    **kwargs,
+)
+```
 
-将V重新view： $$V \in R^{B \times L \times N_{kv} \times d_{head}}$$
+### 2.7 输出投影
 
-将 $V$ 的第1维和第2维转置: $V \in R^{B \times N_{kv} \times L \times d_{head}}$
+```python
+attn_output = attn_output.reshape(*input_shape, -1).contiguous()
+attn_output = self.o_proj(attn_output)
+```
 
-步骤二：KV 复制
+关键创新： QK-Norm
 
-对 K, V 复制 G 次 分配（内部通过stride 实现，不会新增空间）：（K, V \in R^{d}）
-
++ 在计算注意力前对 Q 和 K 做归一化：
+  + 提升训练稳定性
+  + 缓解梯度爆炸（尤其在 deep / wide 模型中）
+  + 注意力分数分布更平滑
