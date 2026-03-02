@@ -1,4 +1,4 @@
-标准 PyTorch 实现
+该函数实现了一种带有 分页 KV 缓存（paged KV cache）、组查询注意力（GQA）、滑动窗口注意力（sliding window） 和 attention sinks（注意力汇点） 的自定义注意力前向传播逻辑，常用于大语言模型推理优化。
 
 ## ```eager_paged_attention_forward```
 
@@ -13,6 +13,16 @@ def eager_paged_attention_forward(
     **kwargs,
 ):
 ```
+
++ ```module```
+
+  当前注意力层的 PyTorch 模块（如 LlamaAttention），包含配置信息（如 layer_idx, num_key_value_groups, sliding_window, sinks 等）;
+
++ ```query, key, value```: 输入的 Q/K/V 张量，通常形状为 ```[batch_size=1, num_heads, seqlen, head_dim]```;
+
++ ```attention_mask```: 注意力掩码，用于控制哪些 token 可以被关注。可能是普通 tensor，也可能是字典（支持不同注意力类型）;
+
++ ```scaling```: 缩放因子，通常是 ```1 / sqrt(head_dim)```，用于缩放点积结果以稳定 softmax
 
 ### 1. 集成分页 KV Cache
 
@@ -71,3 +81,31 @@ if causal_mask is not None:
 + scaling：通常是 1 / sqrt(head_dim)，但可能被 YaRN 等方法调整
 
 + causal_mask：值为 -inf 或大负数，确保 softmax 后无效位置为 0
+
+### 5. 处理 Attention Sinks （注意力汇点）
+
+attention sinks（一种用于长上下文推理的技术，保留最早几个 token 的注意力权重，防止信息丢失）
+
+```python
+if hasattr(module, "sinks"):
+    sinks = module.sinks.reshape(1, -1, 1, 1).expand(query.shape[0], -1, query.shape[-2], -1)
+    attn_weights = torch.cat([attn_weights, sinks], dim=-1)
+    attn_weights = attn_weights - attn_weights.max(dim=-1, keepdim=True).values
+    attn_weights = nn.functional.softmax(attn_weights, dim=-1, dtype=torch.float32).to(query.dtype)
+    attn_weights = attn_weights[..., :-1]
+else:
+    attn_weights = nn.functional.softmax(attn_weights, dim=-1, dtype=torch.float32).to(query.dtype)
+    
+```
+
++ 在```attn_weights``` 的最后一维（即 key 序列长度维度）追加 sink 偏置，相当于新增一个“虚拟 key”。
+
++ 现在 attn_weights 的形状变为 [..., seqlen_k + num_sinks];
+
++ 数值稳定化：减去每行最大值，防止 softmax 溢出（log-sum-exp 技巧）;
+
++ 在 float32 下计算 softmax（更精确），再转回原始 dtype（如 bfloat16）
+
++ 丢弃 sink 对应的注意力权重（因为我们只是用它来影响分布，但不希望输出包含 sink 的 value）
+
++ 如果没有 sinks，正常 softmax
