@@ -24,5 +24,7 @@ graph TD
   + 步骤 4.1： 残差 residual
   + 步骤 4.2：对X做归一化操作
 
-    X = X
+ $Variance \in R^{B \times seq\\_len \times 1}  = \frac{1}{\sqrt{\sum_{i}^{H}X_{i}^2} + \epsilon}$
+
+ $x = x * vairance$
 
