@@ -26,7 +26,27 @@ graph TD
 
  $Variance \in R^{B \times seq\\_len \times 1}  = \frac{1}{\sqrt{\sum_{i}^{H}X_{i}^2} + \epsilon}$
 
- $x = x * vairance$
+ $x1 = x * vairance$
+
+$X1 = X @ B1$
+
++ 注意力头
+
+$Q = RMSNorm(X @ B_q) ; B_Q \in R^{H \times H}$
+
+$Q \in R^{B \times S \times H} 转置： Q \in R^{B \times H \times S}$
+
+$K = RMSNorm(X @ B_k); B_k \in R^{H \times (NumKHead * dim)}$
+
+$K = R^{B \times (numKHead * dim) \times S}$
+
+$V = RMSNorm(X @ B_v); B_v \in R^{H \times (numKHead * dim)}$
+
+$ V \in R^{B \times (numKHead * dim) \times S}$
+
++ 对 Q K 应用旋转编码
+
+  
 
 
 
