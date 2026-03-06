@@ -28,3 +28,5 @@ graph TD
 
  $x = x * vairance$
 
+
+
