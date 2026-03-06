@@ -19,7 +19,7 @@ $$s=\frac{L_{target}}{L_{train}} (s > 1)$$
 
 对输入序列中位置 $m \in [0, L_{target})$，PI 将其映射为：
 
-$$m'=\frac{m}{s} \in [0, L_{train})}$$
+$$m'=\frac{m}{s} \in [0, L_{train}]$$
 
 即：用训练时见过的 $m'$ 位置编码，替代未知的 $m$ 位置
 
